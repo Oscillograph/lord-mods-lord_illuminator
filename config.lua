@@ -4,7 +4,3 @@ lord_illuminator.time_step 			= (tonumber(core.settings:get("lord_illuminator_ti
 lord_illuminator.light_lifetime		= (tonumber(core.settings:get("lord_illuminator_light_lifetime")) or 0.5)
 -- give specific entities luminance, track and process them (may lower performance)
 lord_illuminator.enable_entities	= (core.settings:get_bool("lord_illuminator_enable_entities") or false)
-
--- print("lord_illuminator.time_step: "..lord_illuminator.time_step)
--- print("lord_illuminator.light_lifetime: "..lord_illuminator.light_lifetime)
--- print("lord_illuminator.enable_entities: "..lord_illuminator.enable_entities)
