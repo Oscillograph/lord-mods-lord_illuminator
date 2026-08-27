@@ -46,11 +46,12 @@ lord_illuminator.entities_light_update = function(time_step)
 					goto entities_light_update_continue
 				else
 
-				-- situation B: light node has been removed for some reason (by another player movement, for example)
-				-- need to ignore vector.equals(pos_new, pos_old) condition below
-				if lord_illuminator.entity_light_positions[guid] then
-					if light_pos == lord_illuminator.entity_light_positions[guid] then
-						lord_illuminator.entity_force_update[guid] = true
+					-- situation B: light node has been removed for some reason (by another player movement, for example)
+					-- need to ignore vector.equals(pos_new, pos_old) condition below
+					if lord_illuminator.entity_light_positions[guid] then
+						if light_pos == lord_illuminator.entity_light_positions[guid] then
+							lord_illuminator.entity_force_update[guid] = true
+						end
 					end
 				end
 

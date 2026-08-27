@@ -1,19 +1,22 @@
 -- glue the mod logic to the game engine API
-core.register_globalstep(function(time_step)
-	lord_illuminator.time_passed = lord_illuminator.time_passed + time_step
-	if lord_illuminator.time_passed > lord_illuminator.time_step then
-		lord_illuminator.time_passed = 0
-		for _, player in pairs(core.get_connected_players()) do
-			lord_illuminator.player_light_update(player, time_step)
-		end
-	end
-end)
-
-if lord_illuminator.enable_entities then
+if not lord_illuminator.enable_entities then
 	core.register_globalstep(function(time_step)
 		lord_illuminator.time_passed = lord_illuminator.time_passed + time_step
 		if lord_illuminator.time_passed > lord_illuminator.time_step then
 			lord_illuminator.time_passed = 0
+			for _, player in pairs(core.get_connected_players()) do
+				lord_illuminator.player_light_update(player, time_step)
+			end
+		end
+	end)
+else
+	core.register_globalstep(function(time_step)
+		lord_illuminator.time_passed = lord_illuminator.time_passed + time_step
+		if lord_illuminator.time_passed > lord_illuminator.time_step then
+			lord_illuminator.time_passed = 0
+			for _, player in pairs(core.get_connected_players()) do
+				lord_illuminator.player_light_update(player, time_step)
+			end
 			lord_illuminator.entities_light_update(time_step)
 		end
 	end)
