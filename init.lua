@@ -17,6 +17,8 @@ lord_illuminator.player_light_positions = {} 	-- indexed by player name, updated
 
 dofile(modpath.."/player_functions.lua")
 
+lord_illuminator.time_passed = 0				-- local timer, cleaned up everytime it reaches lord_illuminator.time_step
+
 -- WIP: entities which have luminance
 if lord_illuminator.enable_entities then
 	lord_illuminator.entity_collection = {}			-- indexed by entity guid, entity objects that are being tracked and processed
@@ -27,9 +29,8 @@ if lord_illuminator.enable_entities then
 	lord_illuminator.entity_light_positions = {} 	-- indexed by entity guid, updated regularly in light_update()
 
 	dofile(modpath.."/entity_functions.lua")
+	dofile(modpath.."/api.lua")
 end
 
-lord_illuminator.time_passed = 0				-- local timer, cleaned up everytime it reaches lord_illuminator.time_step
 
-dofile(modpath.."/api.lua")
 dofile(modpath.."/register.lua")

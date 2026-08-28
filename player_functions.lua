@@ -63,7 +63,7 @@ end
 
 -- return string that is a registered lord_illuminator's light source name
 -- return nil if no light source available (light level 0)
-lord_illuminator.light_get_name = function(player)
+lord_illuminator.player_light_get_name = function(player)
 	local player_name = player:get_player_name()
 
 	-- maximum light is 15 - Sun level
@@ -80,7 +80,7 @@ lord_illuminator.light_get_name = function(player)
 end
 
 -- return node position suitable for replacement with a light source node
-lord_illuminator.light_get_pos = function(player_pos)
+lord_illuminator.player_light_get_pos = function(player_pos)
 	-- can replace at feet?
 	if lord_illuminator.can_replace_node(player_pos) then
 		return player_pos
@@ -121,9 +121,9 @@ lord_illuminator.player_light_update = function(player, time_step)
 --	local pos_new = player:get_pos() -- makes light flicker when source is being changed
 	local pos_new = vector.round(vector.add(player:get_pos(), vector.multiply(player:get_velocity(), 2*time_step)))
 	-- what light should be placed
-	local light_name = lord_illuminator.light_get_name(player)
+	local light_name = lord_illuminator.player_light_get_name(player)
 	-- where light should be placed
-	local light_pos = lord_illuminator.light_get_pos(pos_new)
+	local light_pos = lord_illuminator.player_light_get_pos(pos_new)
 
 	-- nowhere to place light - no need to proceed at all
 	if not light_pos then

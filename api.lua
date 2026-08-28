@@ -21,7 +21,7 @@ end
 lord_illuminator.entity_unregister = function(entity_object)
 	if entity_object then
 		local guid = entity_object:get_guid()
-		lord_illuminator.entity_cleanup(guid)
+		lord_illuminator.entity_clean_up(guid)
 	end
 end
 
@@ -32,15 +32,5 @@ lord_illuminator.entity_light_switch = function(entity_object, light_turned_on)
 	if entity_object then
 		local guid = entity_object:get_guid()
 		lord_illuminator.entity_handles_light[guid] = light_turned_on
-	end
-end
-
--- means to change light intensity
--- @param entity_object    EntityObj    entity object
--- @param light_level      Int          1..15
-lord_illuminator.entity_light_level_change = function(entity_object, light_level)
-	if entity_object then
-		local guid = entity_object:get_guid()
-		lord_illuminator.entity_light_level[guid]	= light_level
 	end
 end
