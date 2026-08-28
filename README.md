@@ -41,7 +41,7 @@ end
 ```
 Чтобы источник света уничтожался, когда сущность должна исчезнуть, то сторонний мод должен вызвать функцию `lord_illuminator.entity_unregister(entity_object)`. Например, так:
 ```
-on_activate = function(self, staticdata)
+on_death = function(self, killer)
 	lord_illuminator.entity_unregister(self.object)
 end
 ```
