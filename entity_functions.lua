@@ -73,6 +73,11 @@ lord_illuminator.entities_light_update = function(time_step)
 			-- where light should be placed
 			local light_pos = lord_illuminator.entity_light_get_pos(pos_new)
 
+			-- nowhere to place light - no need to proceed at all
+			if not light_pos then
+				goto entities_light_update_continue
+			end
+
 			if pos_old and pos_new and light_name then
 				-- situation A: light node is present already - no need to proceed
 				if light_name == core.get_node(light_pos).name then
